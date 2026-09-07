@@ -1,0 +1,25 @@
+.theme {
+  --color-brand-100: #ffefe1;
+  --color-brand-200: #ffdabb;
+  --color-brand-600: #a1492e;
+  --color-brand-700: #753521;
+  --color-brand-900: #4c2519;
+  --color-brand: var(--color-brand-700);
+
+  --border: var(--color-brand);
+
+  --font-handwriting: "ChenYuluoyan", "Noto Serif TC", serif;
+}
+
+@font-face {
+  font-family: "ChenYuluoyan";
+  src: url("/fonts/ChenYuluoyan-Thin.subset.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Module 的 class 會轉為雜湊，若想保持原名必須加上 :global() */
+:global(.font-handwriting) {
+  font-family: var(--font-handwriting);
+}

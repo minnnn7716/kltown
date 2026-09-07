@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@import "./theme.css";
+@import "./shadcn.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  font-size: 18px;
+
+  @media (max-width: 1280px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.noiseBackground {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    opacity: .8;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--noise-url);
+    background-size: 100px;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.noiseBackground-light {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    opacity: .5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--noise-url);
+    background-size: 100px;
+    mix-blend-mode: color-burn;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}

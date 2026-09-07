@@ -1,0 +1,29 @@
+@theme {
+  --font-title: var(--font-zen-old-mincho);
+  --font-sans: var(--font-noto-sans-tc), "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-noto-serif-tc), serif;
+
+  /* 預設值，各頁面 theme.module.css 覆寫 */
+  --color-brand: #753521;
+  --color-brand-100: #ffefe1;
+  --color-brand-200: #ffdabb;
+  --color-brand-600: #a1492e;
+  --color-brand-700: #753521;
+  --color-brand-900: #4c2519;
+
+  --color-brand-secondary-100: #ffefe1;
+  --color-brand-secondary-200: #ffefe1;
+  --color-brand-secondary-600: #ffefe1;
+  --color-brand-secondary-700: #ffefe1;
+  --color-brand-secondary-900: #ffefe1;
+
+  --border: var(--color-brand);
+}
+
+:root {
+  --page-background: #edf0f4;
+  font-family: var(--font-sans);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}

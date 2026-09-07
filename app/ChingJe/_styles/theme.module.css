@@ -1,0 +1,12 @@
+.theme {
+  --color-brand-100: #ebf7ff;
+  --color-brand-200: #d4efff;
+  --color-brand-600: #1a6594;
+  --color-brand-700: #134768;
+  --color-brand-900: #022C46;
+  --color-brand: var(--color-brand-700);
+
+  --color-brand-secondary-100: #FFECE0;
+
+  --border: var(--color-brand);
+}
