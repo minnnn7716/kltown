@@ -11,7 +11,6 @@ import {
 } from './CarouselSelectedSnapDisplay'
 
 import { useEffect, useRef, forwardRef } from 'react';
-import { withBasePath } from '@/lib/withBasePath';
 
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import styles from "./ImgCarousel.module.css";
@@ -67,7 +66,7 @@ export const ImgCarousel = forwardRef<ImgCarouselHandle, ImgCarouselProps>(
 
     const preloadImage = (index: number) => {
       const image = new window.Image();
-      image.src = withBasePath(imageList[index].imagePath);
+      image.src = imageList[index].imagePath;
     };
 
     const nextIndex = (selectedSnap + 1) % imageList.length;
@@ -149,7 +148,7 @@ export const ImgCarousel = forwardRef<ImgCarouselHandle, ImgCarouselProps>(
             imageList.map((item, index) => (
               <div key={`img-${index}`} className={styles.embla__slide}>
                 <Image
-                  src={withBasePath(`${item.imagePath}`)}
+                  src={item.imagePath}
                   alt={item.description}
                   fill
                   loading={index === 0 ? "eager" : "lazy"}

@@ -11,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/shadcn-ui/dialog"
-import { useLandingInfo } from "../provider/LandingInfoProvider";
+import { type ProjectCode } from "@/app/project/[projectCode]/_data/projectRegistry";
 
 const schema = z.object({
   InputName: z.string().trim().min(1, "請輸入姓名").max(50, "姓名最多 50 字"),
@@ -39,8 +39,17 @@ type ApiResponse = {
   message: string;
 };
 
-export function ContactForm({ className }: { className?: string }) {
-  const landingInfo = useLandingInfo();
+type ContactFromProps = {
+  className?: string;
+  projectCode: ProjectCode;
+  themeClassName: string;
+}
+
+export function ContactForm({
+  className,
+  projectCode,
+  themeClassName
+}: ContactFromProps) {
   const [serverMessage, setServerMessage] = useState("");
   const [, setSubmitOk] = useState<boolean | null>(null);
 
@@ -79,7 +88,7 @@ export function ContactForm({ className }: { className?: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
-          projectCode: landingInfo?.projectCode ?? ""
+          projectCode: projectCode ?? ""
         }),
       });
 
@@ -173,7 +182,14 @@ export function ContactForm({ className }: { className?: string }) {
           </svg>
         </div>
         <div>
-          <label htmlFor="statement">我同意<Statement content="個資告知聲明事項" /> <span>*</span></label>
+          <label htmlFor="statement">
+            我同意
+            <Statement
+              content="個資告知聲明事項"
+              themeClassName={themeClassName}
+            />
+            <span>*</span>
+          </label>
           <p className="text-sm text-brand-600">提醒您送出資料即視為同意本公司網站之「隱私權政策」</p>
         </div>
       </div>
@@ -201,15 +217,22 @@ export function ContactForm({ className }: { className?: string }) {
   );
 }
 
-const Statement = ({ content }: { content: string }) => {
-  const landingInfo = useLandingInfo();
+type StatementProps = {
+  content: string,
+  themeClassName: string
+}
+
+const Statement = ({
+  content,
+  themeClassName
+}: StatementProps) => {
 
   return (
     <Dialog>
       <DialogTrigger>
         <span className="underline hover:text-brand-600 transition-colors">{content}</span>
       </DialogTrigger>
-      <DialogContent className={landingInfo?.themeClassName}>
+      <DialogContent className={themeClassName}>
         <DialogHeader>
           <DialogTitle>個人資料蒐集告知事項及同意書</DialogTitle>
         </DialogHeader>

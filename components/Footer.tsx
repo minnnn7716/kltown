@@ -1,11 +1,10 @@
 import Image from "next/image"
-import { withBasePath } from "@/lib/withBasePath"
 
 export default function Footer() {
   return (
     <footer className="bg-brand-900">
       <Image
-        src={`${withBasePath("/images/logo_white.svg")}`}
+        src="/images/logo_white.svg"
         width={230}
         height={40}
         alt="共同建設股份有限公司"

@@ -81,3 +81,27 @@ a {
     z-index: 1;
   }
 }
+
+.noiseBackground-dark {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    opacity: .3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--noise-url);
+    background-size: 100px;
+    mix-blend-mode: color-burn;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}

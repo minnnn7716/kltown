@@ -2,6 +2,7 @@
   --font-title: var(--font-zen-old-mincho);
   --font-sans: var(--font-noto-sans-tc), "Microsoft JhengHei", Arial, Helvetica, sans-serif;
   --font-serif: var(--font-noto-serif-tc), serif;
+  --noise-url: url("/textures/noise.png");
 
   /* 預設值，各頁面 theme.module.css 覆寫 */
   --color-brand: #753521;

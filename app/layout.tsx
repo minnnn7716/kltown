@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import FloatingNavigation from "@/components/FloatingNavigation";
 import AOSInit from "@/components/AOSInit";
-
-import { withBasePath } from "@/lib/withBasePath";
 import { Noto_Sans_TC, Noto_Serif_TC, Zen_Old_Mincho } from "next/font/google";
 
 const zenOldMincho = Zen_Old_Mincho({
@@ -39,16 +36,10 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang="zh-Hant" className={`${zenOldMincho.variable} ${notoSansTC.variable} ${notoSerifTC.variable}`}>
-      <body
-        style={
-          {
-            "--noise-url": `url("${withBasePath("/textures/noise.png")}")`
-          } as React.CSSProperties
-        }
-      >
+      <body>
         <AOSInit />
-        <FloatingNavigation />
 
+        {/* 用於顯示 FloatingNavigation 的茅點 */}
         <div
           data-nav-trigger
           className="absolute top-[50svh] h-px w-px pointer-events-none"

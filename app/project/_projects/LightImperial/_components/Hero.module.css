@@ -1,0 +1,116 @@
+.hero {
+  position: relative;
+  background: var(--color-brand-200);
+
+  &::before {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/LightImperial/banner.webp");
+    background-size: cover;
+    animation: heroZoomIn 5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.text-shadow-custom {
+  text-shadow:
+    0 6px 8px #00000020,
+    0 2px 4px #00000010;
+}
+
+.title-primary {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px) scale(0.985);
+  text-shadow:
+    0 6px 8px #00000020,
+    0 2px 4px #00000010;
+
+  animation:
+    titleEnter 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards,
+    titlePrimarySpacing 1s ease-out 0.8s forwards;
+}
+
+.title-secondary {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px) scale(0.985);
+  text-shadow:
+    0 6px 8px #00000020,
+    0 2px 4px #00000010;
+
+  animation: titleEnter 2s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+}
+
+.fadeInAnimation {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in 1.2s forwards;
+}
+
+/* =========================
+   動畫
+========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes titleEnter {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titlePrimarySpacing {
+  from {
+    letter-spacing: 0;
+  }
+
+  to {
+    letter-spacing: 0.3em;
+  }
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+  .title {
+    animation: none;
+  }
+
+  .primarySection::after {
+    animation: none;
+    opacity: 0.15;
+  }
+} */
