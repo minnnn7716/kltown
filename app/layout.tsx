@@ -2,12 +2,19 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import AOSInit from "@/components/AOSInit";
-import { Noto_Sans_TC, Noto_Serif_TC, Zen_Old_Mincho } from "next/font/google";
+import { Noto_Sans_TC, Noto_Serif_TC, Zen_Old_Mincho, Aboreto } from "next/font/google";
 
 const zenOldMincho = Zen_Old_Mincho({
   weight: ["700"],
   subsets: ["latin"],
   variable: "--font-zen-old-mincho",
+  display: "swap",
+});
+
+const aboreto = Aboreto({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-aboreto",
   display: "swap",
 });
 
@@ -35,16 +42,9 @@ export default function RootLayout({
   children,
 }: RootLayoutProps) {
   return (
-    <html lang="zh-Hant" className={`${zenOldMincho.variable} ${notoSansTC.variable} ${notoSerifTC.variable}`}>
+    <html lang="zh-Hant" className={`${zenOldMincho.variable} ${notoSansTC.variable} ${notoSerifTC.variable} ${aboreto.variable}`}>
       <body>
         <AOSInit />
-
-        {/* 用於顯示 FloatingNavigation 的茅點 */}
-        <div
-          data-nav-trigger
-          className="absolute top-[50svh] h-px w-px pointer-events-none"
-          aria-hidden="true"
-        />
 
         {children}
       </body>

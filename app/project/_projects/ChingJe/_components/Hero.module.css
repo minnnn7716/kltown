@@ -45,8 +45,8 @@
 
   background: radial-gradient(
     circle at 50% 50%,
-    rgb(255 169 136 / 60%) 0%,
-    rgb(255 169 136 / 0%) 72%
+    color-mix(in srgb, var(--color-brand-secondary-300) 60%, transparent) 0%,
+    color-mix(in srgb, var(--color-brand-secondary-300) 0%, transparent) 72%
   );
 
   width: clamp(340px, 45vw, 760px);

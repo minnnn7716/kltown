@@ -5,6 +5,10 @@
 @import "./theme.css";
 @import "./shadcn.css";
 
+:root {
+  --border: var(--color-brand);
+}
+
 * {
   box-sizing: border-box;
 }

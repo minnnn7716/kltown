@@ -11,7 +11,7 @@ export default function ProjectDetail({
 }) {
   return (
     <section className="overflow-y-clip">
-      <div className="mx-auto md:max-w-[80vw] 2xl:max-w-[65vw] py-22 px-8 text-brand">
+      <div className="mx-auto md:max-w-[80vw] 2xl:max-w-[65vw] p-8 text-brand">
         <dl
           className="grid grid-cols-1 md:grid-cols-2"
           data-aos="fade-up"

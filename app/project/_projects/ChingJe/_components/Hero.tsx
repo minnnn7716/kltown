@@ -1,6 +1,6 @@
 import styles from "./Hero.module.css";
 
-export function Hero() {
+export default function Hero() {
   return (
     <section className="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 min-h-svh">
       <div className={`bg-brand text-white content-center pl-[clamp(32px,8vw,150px)] ${styles.primarySection}`}>

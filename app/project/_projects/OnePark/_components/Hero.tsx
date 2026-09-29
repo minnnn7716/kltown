@@ -9,13 +9,13 @@ const imperialScript = Imperial_Script({
   display: "swap",
 });
 
-export function Hero() {
+export default function Hero() {
   return (
     <div className="noiseBackground bg-brand-200">
       <section className="relative h-svh overflow-hidden text-olive-800 text-center content-center ">
         <div className="-z-1 decorationImages absolute left-0 top-0 h-full w-full">
           <Image
-            src="/images/OnePark/hero/hero-main-deco.webp"
+            src="/images/OnePark/hero/hero-deco-left.webp"
             alt=""
             width={500}
             height={500}
@@ -24,7 +24,7 @@ export function Hero() {
           />
 
           <Image
-            src="/images/OnePark/hero/hero-secondary-deco-6.webp"
+            src="/images/OnePark/hero/hero-deco-middle.webp"
             alt=""
             width={140}
             height={140}

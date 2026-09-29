@@ -1,0 +1,82 @@
+import type { ProjectDetailItem } from "@/app/project/[projectCode]/_components/ProjectDetail"
+import type { IntroContent } from "@/app/project/[projectCode]/_components/Intro";
+
+export const projectDetail: ProjectDetailItem[] = [
+  { label: "基地位置", value: "新北市中和區水源路 34 巷 10 號" },
+  { label: "棟戶規劃", value: "2 幢；2 棟；82 戶住家；1 戶店面" },
+  { label: "樓層規劃", value: "地上 14 層 / 地下 3 層" },
+  { label: "住宅坪數", value: "1 房 - 15 坪；2 房 - 23/24 坪；3 房 - 32/37 坪" },
+  { label: "店舖坪數", value: "39 坪" },
+  { label: "車位規劃", value: "平面式 40 個" },
+  { label: "建築設計", value: "許義明建築師事務所" },
+  { label: "景觀設計", value: "蔡心怡盛亞工程有限公司" },
+  { label: "公設設計", value: "陳鵬旭空間美學室內裝修有限公司" },
+  { label: "營造團隊", value: "金宏營造股份有限公司" },
+  { label: "目前進度", value: "興建中", fullWidth: true },
+];
+
+export const introContent: IntroContent = {
+  title: "和風入境 靜居中和",
+  content: (
+    <>
+      退離中和市心主幹道約 30 米，<br />
+      以一巷宅的謙退尺度，收藏鬧中取靜的日常。<br />
+      <br />
+      步行串聯永安市場站，環狀線中和站亦近在生活圈內，<br />
+      64 快速道路、華中橋與中山路，從容往返雙北城市動線。<br />
+      <br />
+      近擁中和國小、漳和國中、南山完全中學，<br />
+      轉身即享中和廟口商圈、比漾廣場與成熟生活機能，<br />
+      以精緻日式美學，在熟成街廓裡留一方簡約靜好。
+    </>
+  ),
+  images: [
+    {
+      imagePath: "/images/ChingJe/intro/chingje-ai-render.webp",
+      description: "青喆 SOHO 結合 AI 模擬"
+    },
+    {
+      imagePath: "/images/ChingJe/intro/mrt-station.jpg",
+      description: "永安市場捷運站"
+    },
+    {
+      imagePath: "/images/ChingJe/intro/mall.jpg",
+      description: "商場示意圖"
+    },
+    {
+      imagePath: "/images/ChingJe/intro/lobby.jpg",
+      description: "青喆 SOHO 接待大廳"
+    }
+  ]
+};
+
+export const interiorItems = [
+  {
+    title: "青喆 SOHO 內裝",
+    buttonName: null,
+    area: null,
+    details: null,
+    images: [
+      {
+        imagePath: "/images/ChingJe/interior/01.jpg",
+        description: "青喆 SOHO 內裝"
+      },
+      {
+        imagePath: "/images/ChingJe/interior/02.jpg",
+        description: "青喆 SOHO 內裝"
+      },
+      {
+        imagePath: "/images/ChingJe/interior/03.jpg",
+        description: "青喆 SOHO 內裝"
+      },
+      {
+        imagePath: "/images/ChingJe/interior/04.jpg",
+        description: "青喆 SOHO 內裝"
+      },
+      {
+        imagePath: "/images/ChingJe/interior/05.jpg",
+        description: "青喆 SOHO 內裝"
+      }
+    ]
+  },
+];

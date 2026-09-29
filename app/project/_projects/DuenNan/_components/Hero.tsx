@@ -10,7 +10,7 @@ const delaGothicOne = Dela_Gothic_One({
   display: "swap",
 });
 
-export function Hero() {
+export default function Hero() {
   return (
     <div className="noiseBackground-light bg-brand-600">
     <section className="relative min-h-svh overflow-hidden">

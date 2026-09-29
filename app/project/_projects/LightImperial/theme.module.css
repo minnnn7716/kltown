@@ -3,11 +3,28 @@
   --color-brand-200: #cbe7ff;
   --color-brand-600: #2a5981;
   --color-brand-700: #1b5486;
-  --color-brand-900: #19344b;
+  --color-brand-800: #1b3852;
+  --color-brand-900: #132b3f;
   --color-brand: var(--color-brand-700);
 
-  --color-brand-secondary-100: #FFECE0;
-  --color-brand-secondary-600: #d14509;
+  --color-brand-secondary-100: var(--color-gray-100);
+  --color-brand-secondary-200: var(--color-gray-200);
+
+  --color-brand-bg-100: var(--color-brand-secondary-100);
+  --color-brand-bg-200: var(--color-brand-secondary-200);
 
   --border: var(--color-brand);
+}
+
+@font-face {
+  font-family: "Mantou";
+  src: url("/fonts/Mantou.subset.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Module 的 class 會轉為雜湊，若想保持原名必須加上 :global() */
+:global(.font-mantou) {
+  font-family: "Mantou", "Noto Serif TC", serif;
 }

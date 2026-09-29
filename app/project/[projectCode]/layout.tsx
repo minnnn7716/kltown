@@ -3,11 +3,14 @@ import type { ReactNode } from "react";
 
 import { projectRegistry, isProjectCode } from "./_data/projectRegistry";
 import FloatingNavigation from "@/app/project/[projectCode]/_components/FloatingNavigation";
+import Intro from "@/app/project/[projectCode]/_components/Intro";
+import Interior from "@/app/project/[projectCode]/_components/Interior";
+import Surrounding from "@/app/project/[projectCode]/_components/Surrounding";
 import ProjectDetail from "@/app/project/[projectCode]/_components/ProjectDetail";
+import ScrollToProjectTop from "@/app/project/[projectCode]/_components/ScrollToProjectTop";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/Footer";
 
-import "@/styles/globals.css";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -37,7 +40,6 @@ type ProjectLayoutProps = Readonly<{
 
 export default async function ProjectLayout({
   params,
-  children,
 }: ProjectLayoutProps) {
   const { projectCode } = await params;
 
@@ -47,8 +49,12 @@ export default async function ProjectLayout({
 
   const project = projectRegistry[projectCode];
 
+  const { introContent, surroundingDetail, interiorItems, projectDetail } = project;
+  const Hero = project.hero;
+
   return (
     <div className={project.themeClassName}>
+      <ScrollToProjectTop projectCode={projectCode} />
       <FloatingNavigation />
 
       {/* 用於顯示 FloatingNavigation 的茅點 */}
@@ -58,10 +64,13 @@ export default async function ProjectLayout({
         aria-hidden="true"
       />
 
-      <div className="noiseBackground bg-brand-secondary-100">
-        {children}
-
-        <ProjectDetail projectDetails={project.projectDetail} />
+      <Hero />
+      
+      <div className="noiseBackground bg-linear-to-b from-brand-bg-200 to-brand-bg-100">
+        <Intro introContent={introContent}/>
+        { surroundingDetail && <Surrounding surroundingDetail={surroundingDetail} /> }
+        <ProjectDetail projectDetails={projectDetail} />
+        { interiorItems && <Interior interiorItems={interiorItems} />}
         <Contact projectCode={projectCode} />
       </div>
       <Footer />

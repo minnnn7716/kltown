@@ -1,0 +1,185 @@
+@font-face {
+  font-family: "ChenYuluoyan";
+  src: url("/fonts/ChenYuluoyan.subset.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Module 的 class 會轉為雜湊，若想保持原名必須加上 :global() */
+:global(.font-handwriting) {
+  font-family: "ChenYuluoyan", "Noto Serif TC", serif;
+}
+
+@font-face {
+  font-family: "KuMincho";
+  src: url("/fonts/KuMincho.subset.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Module 的 class 會轉為雜湊，若想保持原名必須加上 :global() */
+:global(.font-kuMincho) {
+  font-family: "KuMincho", "Noto Serif TC", serif;
+}
+
+@font-face {
+  font-family: "GenRyuMin";
+  src: url("/fonts/GenRyuMin.subset.ttf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Module 的 class 會轉為雜湊，若想保持原名必須加上 :global() */
+:global(.font-genRyuMin) {
+  font-family: "GenRyuMin", "Noto Serif TC", serif;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: url("/images/main/hero-bg.jpg") center / cover no-repeat;
+    background-attachment: fixed;
+    opacity: 0;
+    z-index: -1;
+    animation:
+      heroFadeIn 2s ease-out 0.5s forwards,
+      heroZoom 18s linear infinite alternate;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #00000075;
+    opacity: 0;
+    animation: heroFadeIn 2s ease-out 0.5s forwards;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.title {
+  text-shadow: 0 4px 8px #00000080;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateX(-30px) scale(0.985);
+
+  animation:
+    titleEnterLeft 1.5s ease forwards,
+    titlePrimarySpacing 1s ease-out 0.5s forwards;
+}
+
+.subTitle {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px) scale(0.985);
+  text-shadow:
+    0 4px 6px #00000080,
+    0 0 2px #00000060;
+
+  animation: titleEnterUp 1s ease 1.2s forwards;
+}
+
+.logo {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px) scale(0.985);
+
+  animation: titleEnterUp 1s ease 1.8s forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before {
+    opacity: 1;
+    animation: none;
+    background-attachment: scroll;
+  }
+}
+
+/* background-attachment: fixed 在多數行動瀏覽器會造成捲動卡頓 */
+@media (max-width: 768px) {
+  .hero::before {
+    background-attachment: scroll;
+  }
+}
+
+@keyframes titleEnterLeft {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes titleEnterUp {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titlePrimarySpacing {
+  from {
+    letter-spacing: 0;
+  }
+
+  to {
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before {
+    animation: none;
+  }
+
+  .title {
+    animation: none;
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
