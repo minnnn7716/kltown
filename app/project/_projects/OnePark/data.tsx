@@ -1,5 +1,4 @@
-import type { ProjectDetailItem } from "@/app/project/[projectCode]/_components/ProjectDetail"
-import { IntroContent } from "@/app/project/[projectCode]/_components/Intro";
+import type { IntroContent, ProjectDetailItem } from "@/app/project/[projectCode]/_data/projectTypes";
 
 export const projectDetail: ProjectDetailItem[] = [
   { label: "基地位置", value: "臺中市南屯區新生里龍富十路 223 號" },
@@ -12,7 +11,7 @@ export const projectDetail: ProjectDetailItem[] = [
   { label: "總車位數", value: "汽車 51 位" },
   { label: "建築設計", value: "初樸建築師事務所" },
   { label: "施工團隊", value: "崴正營造股份有限公司" },
-  { label: "目前進度", value: "建造執照已核准，興建中", fullWidth: true },
+  { label: "目前進度", value: "全新完工，成屋銷售中", fullWidth: true },
 ];
 
 export const introContent: IntroContent = {
@@ -31,7 +30,7 @@ export const introContent: IntroContent = {
   ),
   images: [
     {
-      imagePath: "/images/OnePark/intro/onePark-ai-render.jpg",
+      imagePath: "/images/OnePark/intro/onePark-ai-render.webp",
       description: "台中 One Park 結合 AI 模擬"
     },
   ]
@@ -45,27 +44,27 @@ export const interiorItems = [
     details: null,
     images: [
       {
-        imagePath: "/images/OnePark/interior/01.jpg",
+        imagePath: "/images/OnePark/interior/01.webp",
         description: "台中 One Park 內裝"
       },
       {
-        imagePath: "/images/OnePark/interior/02.jpg",
+        imagePath: "/images/OnePark/interior/02.webp",
         description: "台中 One Park 內裝"
       },
       {
-        imagePath: "/images/OnePark/interior/03.jpg",
+        imagePath: "/images/OnePark/interior/03.webp",
         description: "台中 One Park 內裝"
       },
       {
-        imagePath: "/images/OnePark/interior/04.jpg",
+        imagePath: "/images/OnePark/interior/04.webp",
         description: "台中 One Park 內裝"
       },
       {
-        imagePath: "/images/OnePark/interior/05.jpg",
+        imagePath: "/images/OnePark/interior/05.webp",
         description: "台中 One Park 內裝"
       },
             {
-        imagePath: "/images/OnePark/interior/06.jpg",
+        imagePath: "/images/OnePark/interior/06.webp",
         description: "台中 One Park 內裝"
       },
     ]

@@ -1,8 +1,5 @@
-export type ProjectDetailItem = {
-  label: string
-  value: string
-  fullWidth?: boolean
-}
+import type { ProjectDetailItem } from "../_data/projectTypes"
+import AOSReveal from "@/components/AOSReveal"
 
 export default function ProjectDetail({
   projectDetails
@@ -10,11 +7,12 @@ export default function ProjectDetail({
   projectDetails: ProjectDetailItem[]
 }) {
   return (
-    <section className="overflow-y-clip">
-      <div className="mx-auto md:max-w-[80vw] 2xl:max-w-[65vw] p-8 text-brand">
-        <dl
+    <section className="overflow-y-clip mb-20">
+      <div className="mx-auto md:max-w-[90vw] xl:max-w-[80vw] 2xl:max-w-[65vw] px-8 md:px-0 text-brand">
+        <AOSReveal
+          as="dl"
           className="grid grid-cols-1 md:grid-cols-2"
-          data-aos="fade-up"
+          animation="fade-up"
         >
           {projectDetails.map((item) => (
             <div
@@ -26,7 +24,7 @@ export default function ProjectDetail({
               <dd>{item.value}</dd>
             </div>
           ))}
-        </dl>
+        </AOSReveal>
       </div>
     </section>
   )

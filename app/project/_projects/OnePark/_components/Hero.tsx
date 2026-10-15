@@ -26,8 +26,8 @@ export default function Hero() {
           <Image
             src="/images/OnePark/hero/hero-deco-middle.webp"
             alt=""
-            width={140}
-            height={140}
+            width={190}
+            height={189}
             loading="eager"
             className={`${styles['deco-flower']} absolute h-35 w-auto left-[22vw] bottom-[10vh] pointer-events-none`}
           />

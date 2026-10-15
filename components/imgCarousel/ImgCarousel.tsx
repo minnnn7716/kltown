@@ -15,16 +15,12 @@ import { useEffect, useRef, forwardRef } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import styles from "./ImgCarousel.module.css";
 import type { EmblaCarouselType } from 'embla-carousel';
+import type { ImageListItem } from "@/app/project/[projectCode]/_data/projectTypes";
 
 export type ImgCarouselProps = {
   className?: string,
   imageList: ImageListItem[],
   onSelect?: (selectedSnap: number) => void
-}
-
-export type ImageListItem = {
-  imagePath: string;
-  description: string;
 }
 
 export type ImgCarouselHandle = {

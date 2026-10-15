@@ -28,8 +28,9 @@ export default function FloatingNavigation() {
         <Image
           src="/images/logo_duck.svg"
           alt="共同建設股份有限公司"
-          width={30}
-          height={30}
+          width={200}
+          height={174}
+          className="w-7.5 h-auto"
         />
       </Link>
       <Link

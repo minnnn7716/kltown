@@ -5,8 +5,34 @@
 @import "./theme.css";
 @import "./shadcn.css";
 
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    filter: blur(var(--enter-blur, 10px));
+    transform: translate(var(--enter-x, 0px), var(--enter-y, 30px)) scale(var(--enter-scale, 0.985));
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 :root {
   --border: var(--color-brand);
+  --hero-enter-animation: heroEnter;
+  --hero-fade-animation: heroFadeIn;
 }
 
 * {

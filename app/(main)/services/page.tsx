@@ -8,7 +8,7 @@ export default function Page() {
       <PageBanner
         title="Services"
         subtitle="服務內容"
-        backgroundImage="/images/main/about-services.jpg"
+        backgroundImage="/images/main/services/banner.webp"
       />
 
       <section className="mx-auto w-[90%] md:w-[75%] max-w-7xl py-16 md:py-20">

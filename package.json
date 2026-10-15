@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy:test": "call deploy-test.bat",
     "start": "next start",
     "lint": "eslint",
     "copy": "node scripts/copy-project.mjs",

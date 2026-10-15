@@ -7,7 +7,7 @@ export default function Page() {
       <PageBanner
         title="About Us"
         subtitle="關於我們"
-        backgroundImage="/images/main/about-banner.jpg"
+        backgroundImage="/images/main/about/banner.webp"
       />
 
       <section className="mx-auto grid w-[90%] max-w-7xl gap-8 py-16 md:w-[75%] md:py-20">
@@ -36,16 +36,16 @@ export default function Page() {
           <picture>
             <source
               media="(max-width: 767px)"
-              srcSet="/images/main/about_organization_sm.svg"
+              srcSet="/images/main/about/organization_sm.svg"
               width="748"
               height="464"
             />
             <Image
-              src="/images/main/about_organization.svg"
-              width="650"
+              src="/images/main/about/organization.svg"
+              width="1244"
               height="496"
               alt="組織架構"
-              className="mx-auto"
+              className="mx-auto w-full max-w-162.5 h-auto"
             />
           </picture>
         </div>

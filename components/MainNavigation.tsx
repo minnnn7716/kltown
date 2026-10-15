@@ -69,13 +69,13 @@ function NavigationContent({ useTrigger }: { useTrigger: boolean }) {
       >
         <div className="flex items-center justify-between px-4 md:px-10 py-1">
           <h1>
-            <Link href="/">
+            <Link href="/" className="block pt-1 pb-2">
               <Image
                 src="/images/logo_white.svg"
                 width={257}
-                height={40}
+                height={45}
                 alt="共同建設股份有限公司"
-                className="pt-1 pb-2"
+                className="h-auto"
               />
             </Link>
           </h1>
@@ -140,7 +140,7 @@ function NavigationContent({ useTrigger }: { useTrigger: boolean }) {
           ))}
         </ul>
       </nav>
-      {!useTrigger && <div aria-hidden="true" className="h-15" />}
+      {!useTrigger && <div aria-hidden="true" className="h-15 2xl:h-14" />}
     </>
   );
 }

@@ -1,10 +1,43 @@
-import type { ComponentType } from "react"
-import type { ProjectDetailItem } from "@/app/project/[projectCode]/_components/ProjectDetail"
-import type { IntroContent } from "@/app/project/[projectCode]/_components/Intro";
-import { InteriorItem } from "@/app/project/[projectCode]/_components/Interior";
-import { SurroundingDetail } from "../_components/Surrounding";
+import type { ComponentType, ReactNode } from "react"
 
 type ProjectPage = ComponentType;
+
+export type ImageListItem = {
+  imagePath: string;
+  description: string;
+}
+
+export type ProjectDetailItem = {
+  label: string;
+  value: string;
+  fullWidth?: boolean;
+}
+
+export type IntroContent = {
+  title: string;
+  content: ReactNode;
+  images: ImageListItem[];
+}
+
+export type SurroundingDetail = {
+  title: string;
+  subTitle: string;
+  locationHighlights: {
+    distance: string;
+    name: string;
+    description: string;
+  }[];
+  aerialImage: string;
+  aerialHighlightsImage?: string;
+}
+
+export type InteriorItem = {
+  title: string;
+  buttonName: string | null;
+  area: string | null;
+  details: Record<string, string> | null;
+  images: ImageListItem[];
+}
 
 export type ProjectConfig = {
   name: string;

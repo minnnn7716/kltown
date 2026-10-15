@@ -1,17 +1,7 @@
 import Image from "next/image";
 import { Fragment } from "react";
-
-export type SurroundingDetail = {
-  title: string;
-  subTitle: string;
-  locationHighlights: {
-    distance: string;
-    name: string;
-    description: string;
-  }[];
-  aerialImage: string;
-  aerialHighlightsImage: string;
-}
+import type { SurroundingDetail } from "../_data/projectTypes"
+import AOSReveal from "@/components/AOSReveal";
 
 function renderHeading(text: string) {
   const finalCharacter = text.at(-1)
@@ -34,25 +24,27 @@ export default function Surrounding({ surroundingDetail }: {
   surroundingDetail: SurroundingDetail;
 }) {
   return (
-    <section className="overflow-x-clip">
-      <div className="mx-auto md:max-w-[80vw] 2xl:max-w-[65vw] flex flex-col md:flex-row items-center justify-between gap-y-10 md:gap-y-0 pt-15 -mb-15 md:mb-0 md:py-20 text-brand">
-        <div
+    <section className="overflow-x-clip mb-20">
+      <div className="mx-8 xl:mx-auto xl:max-w-[80vw] 2xl:max-w-[65vw] flex flex-col md:flex-row items-center justify-between gap-y-10 md:gap-y-0 pt-15 -mb-10 md:mb-0 md:pt-20 md:pb-15 text-brand">
+        <AOSReveal
+          as="div"
           className="font-title text-center"
-          data-aos="fade-right"
-          data-aos-offset="200"
+          animation="fade-right"
+          offset={200}
         >
-          <h2 className="text-[2.8rem] mb-4 font-bold tracking-[.4em] md:tracking-[.2em]">
+          <h2 className="text-[2.8rem] md:text-[2.5rem] xl:text-[2.8rem] mb-4 font-bold tracking-[.4em] md:tracking-[.2em]">
             {renderHeading(surroundingDetail.title)}
           </h2>
-          <h3 className="text-xl font-medium tracking-[.4em] md:tracking-[.8em]">
+          <h3 className="text-xl md:text-lg xl:text-xl font-medium tracking-[.4em] md:tracking-[.8em]">
             {renderHeading(surroundingDetail.subTitle)}
           </h3>
-        </div>
+        </AOSReveal>
 
-        <ul
+        <AOSReveal
+          as="ul"
           className="space-y-5 md:space-y-2 text-xl md:text-lg"
-          data-aos="fade-left"
-          data-aos-offset="200"
+          animation="fade-left"
+          offset={200}
         >
           {
             surroundingDetail.locationHighlights.map(highlight => (
@@ -63,28 +55,33 @@ export default function Surrounding({ surroundingDetail }: {
               </li>
             ))
           }
-        </ul>
+        </AOSReveal>
       </div>
 
-      <div className="relative w-full min-h-screen">
-        <Image
-          src={surroundingDetail.aerialHighlightsImage}
-          alt="地標文字"
-          fill
-          sizes="(max-width: 768px) 100vw, 60vw"
-          className="object-cover z-5"
-          style={{ objectPosition: 'calc(100% - 20%) center' }}
-          data-aos="fade-up"
-          data-aos-offset="300"
-          data-aos-duration="800"
-        />
+      <div className="relative w-full min-h-[60svh] md:min-h-[90svh] 2xl:min-h-auto overflow-x-clip xl:aspect-1684/529">
+        <AOSReveal
+          as="div"
+          className="absolute inset-0 z-10"
+          animation="fade-up"
+          offset={300}
+          duration={800}
+        >
+          <Image
+            src={surroundingDetail.aerialHighlightsImage}
+            alt="地標文字"
+            fill
+            sizes="100vw"
+            className="object-cover z-5"
+            style={{ objectPosition: 'center' }}
+          />
+        </AOSReveal>
         <Image
           src={surroundingDetail.aerialImage}
           alt="模擬空拍圖"
           fill
-          sizes="(max-width: 768px) 100vw, 60vw"
+          sizes="100vw"
           className="object-cover"
-          style={{ objectPosition: 'calc(100% - 20%) center' }}
+          style={{ objectPosition: 'center' }}
         />
       </div>
     </section>

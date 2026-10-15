@@ -1,5 +1,4 @@
-import type { ProjectDetailItem } from "@/app/project/[projectCode]/_components/ProjectDetail"
-import type { IntroContent } from "@/app/project/[projectCode]/_components/Intro";
+import type { IntroContent, ProjectDetailItem } from "@/app/project/[projectCode]/_data/projectTypes";
 
 export const projectDetail: ProjectDetailItem[] = [
   { label: "基地位置", value: "台北市市民大道二段 67 巷 29 號" },
@@ -8,11 +7,11 @@ export const projectDetail: ProjectDetailItem[] = [
   { label: "建案類型", value: "電梯華廈" },
   { label: "建築規模", value: "地上 8 層、地下 2 層；RC 造；共 12 戶" },
   { label: "總樓地板面積", value: "482.15 坪" },
-  { label: "總銷售面積", value: "443.16 坪" },
+  { label: "總銷售面積", value: "436.95 坪" },
   { label: "總車位數", value: "汽車 12 位；機械昇降、平面式及機械停車式" },
   { label: "建築設計", value: "奧宇國際設計集團" },
   { label: "施工團隊", value: "國合營造事業有限公司" },
-  { label: "目前進度", value: "建造執照已核准，工程進行中", fullWidth: true },
+  { label: "目前進度", value: "已完工取得使用執照，僅剩3戶，即將完銷", fullWidth: true },
 ];
 
 export const introContent: IntroContent = {
@@ -57,79 +56,82 @@ export const interiorItems = [
   {
     title: "A 戶現代輕奢",
     buttonName: "A 戶",
-    area: 15.7,
+    area: "15.45 坪",
     details: {
-      "玄關": 0.7,
-      "客餐廳": 5.7,
-      "主臥房": 3,
-      "次臥房": 2.7,
-      "廚房": 1.1,
-      "浴室": 1.1,
-      "工作陽台": 0.7,
-      "前陽台": 0.7,
+      "共有部分": "約 11.04 - 11.74 坪",
+      "登記面積": "約 28.81 - 30.64 坪",
+      "公設佔比": "約 37.95%",
+      "陽台": "約 1.53 坪",
+      "雨遮": "約 0.79 - 1.92 坪",
+      "得房率": "約 61.7%",
     },
     images: [
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-A-01.jpg",
+        imagePath: "/images/HuaShan/interior/A-01.webp",
         description: "A 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-A-02.jpg",
+        imagePath: "/images/HuaShan/interior/A-02.webp",
         description: "A 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-A-03.jpg",
+        imagePath: "/images/HuaShan/interior/A-03.webp",
         description: "A 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-A-04.jpg",
+        imagePath: "/images/HuaShan/interior/A-04.webp",
         description: "A 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-A-05.jpg",
+        imagePath: "/images/HuaShan/interior/A-05.webp",
         description: "A 戶實拍照"
+      },
+      {
+        imagePath: "/images/HuaShan/interior/A-06.webp",
+        description: "A 戶傢俱擺置圖"
       },
     ]
   },
   {
     title: "B 戶人文雅緻",
     buttonName: "B 戶",
-    area: 15.3,
+    area: "14.67 坪",
     details: {
-      "玄關": 1.2,
-      "客餐廳": 4,
-      "主臥房": 3.2,
-      "次臥房": 3,
-      "廚房": 1.1,
-      "浴室": 1.2,
-      "工作陽台": 0.9,
-      "前陽台": 0.7,
+      "共有部分": "約 10.25 - 11.05 坪",
+      "登記面積": "約 26.77 - 28.84 坪",
+      "公設佔比": "約 37.95%",
+      "陽台": "約 1.85 坪",
+      "雨遮": "約 1.28 坪",
+      "得房率": "約 61.7%",
     },
     images: [
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-B-01.jpg",
+        imagePath: "/images/HuaShan/interior/B-01.webp",
         description: "B 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-B-02.jpg",
+        imagePath: "/images/HuaShan/interior/B-02.webp",
         description: "B 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-B-03.jpg",
+        imagePath: "/images/HuaShan/interior/B-03.webp",
         description: "B 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-B-04.jpg",
+        imagePath: "/images/HuaShan/interior/B-04.webp",
         description: "B 戶實拍照"
       },
       {
-        imagePath: "/images/HuaShan/interior/Hua Shan-B-05.jpg",
+        imagePath: "/images/HuaShan/interior/B-05.webp",
         description: "B 戶實拍照"
+      },
+      {
+        imagePath: "/images/HuaShan/interior/B-06.webp",
+        description: "B 戶傢俱擺置圖"
       },
     ]
   },
 ];
-
 
 export const surroundingDetail = {
   title: "城心藏藝 生活成景",

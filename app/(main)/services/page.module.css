@@ -76,15 +76,15 @@
 }
 
 .serviceLink {
-  background-image: url("/images/main/services-whole_case.jpg");
+  background-image: url("/images/main/services/whole_case.webp");
 }
 
 .serviceNavigation li:nth-child(2) .serviceLink {
-  background-image: url("/images/main/services-dangerous_and%20old%20buildings.jpg");
+  background-image: url("/images/main/services/dangerous_and%20old%20buildings.webp");
 }
 
 .serviceNavigation li:nth-child(3) .serviceLink {
-  background-image: url("/images/main/services-joint.jpg");
+  background-image: url("/images/main/services/joint.webp");
 }
 
 .serviceLink:hover::before,

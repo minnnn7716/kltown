@@ -3,6 +3,7 @@ import { orderedProjectCodes } from "@/app/project/[projectCode]/_data/projectRe
 import Image from "next/image";
 import styles from "./page.module.css";
 import { PortfolioCarousel } from "./_components/PortfolioCarousel";
+import AOSReveal from "@/components/AOSReveal";
 
 const portfolioProjectCodes = orderedProjectCodes;
 
@@ -25,22 +26,25 @@ export default function Page() {
               精耕細節，<br className="md:hidden" />打造永恆價值承諾<br />
               集眾人智慧，<br className="md:hidden" />齊心協力打造美好生活家園
             </h3>
-            <Image
-              src="/images/logo_white.svg"
-              width={280}
-              height={40}
-              alt="共同建設股份有限公司"
-              className={`${styles.logo} pt-1 md:pb-2 w-70`}
-            />
+            <div className="pt-1 md:pb-2">
+              <Image
+                src="/images/logo_white.svg"
+                width={280}
+                height={49}
+                alt="共同建設股份有限公司"
+                className={`${styles.logo} w-70 h-auto`}
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <div className="noiseBackground bg-linear-to-b from-brand-bg-200 to-brand-bg-100">
-        <section
+        <AOSReveal
+          as="section"
           className="w-[90%] max-w-7xl mx-auto py-16 md:py-25 gap-6 md:gap-x-6 grid grid-cols-1 md:grid-cols-[1fr_4fr]"
-          data-aos="fade-up"
-          data-aos-delay="100"
+          animation="fade-up"
+          delay={100}
         >
           <div className="flex flex-col justify-between">
             <div>
@@ -53,31 +57,33 @@ export default function Page() {
             projectCodes={portfolioProjectCodes}
             controlsTargetId="portfolio-carousel-controls"
           />
-        </section>
+        </AOSReveal>
 
         <section className="noiseBackground bg-brand-300">
           <div className="w-[90%] max-w-7xl mx-auto py-16 md:py-25">
-            <div
+            <AOSReveal
+              as="div"
               className="text-center px-2 mb-8 md:mb-15"
-              data-aos="fade-up"
-              data-aos-delay="100"
+              animation="fade-up"
+              delay={100}
             >
               <h2 className="font-aboreto text-5xl md:text-6xl mb-2">Awards</h2>
               <p className="font-serif font-medium text-2xl md:text-xl tracking-[.2em]">—— 得獎紀錄 ——</p>
-            </div>
+            </AOSReveal>
 
             <div className="grid gap-y-10 md:gap-y-25">
-              <div
+              <AOSReveal
+                as="div"
                 className="grid grid-cols-1 md:grid-cols-2 gap-10"
-                data-aos="fade-up"
-                data-aos-delay="200"
+                animation="fade-up"
+                delay={200}
               >
                 <Image
-                  src="/images/main/award_gstone.png"
+                  src="/images/main/home/award_gstone.webp"
                   width={650}
-                  height={500}
+                  height={366}
                   alt="金石獎-敦南 SOHO"
-                  className="rounded-tl-4xl rounded-br-4xl shadow-xl"
+                  className="self-start h-auto rounded-tl-4xl rounded-br-4xl shadow-xl"
                 />
                 <div>
                   <h3 className="mb-4">
@@ -87,12 +93,13 @@ export default function Page() {
                   <h4 className="inline-block py-1 bg-brand text-white px-4 mb-4">敦南 SOHO 大廈</h4>
                   <p className="font-light leading-relaxed">共同建設在台北市敦化南路一段 177 巷 46 號的「敦南SOHO」建案，獲得 2019 年第 27 屆中華建築金石獎活動委員會肯定；得到優良建築規劃設計類〈住宅商業大樓中層組〉金石獎。</p>
                 </div>
-              </div>
+              </AOSReveal>
 
-              <div
+              <AOSReveal
+                as="div"
                 className="grid grid-cols-1 md:grid-cols-2 gap-10"
-                data-aos="fade-up"
-                data-aos-delay="100"
+                animation="fade-up"
+                delay={100}
               >
                 <div className="order-2 md:order-1">
                   <h3 className="mb-4">
@@ -117,13 +124,13 @@ export default function Page() {
                 </div>
 
                 <Image
-                  src="/images/main/award_French Design.png"
+                  src="/images/main/home/award_French Design.webp"
                   width={650}
-                  height={500}
+                  height={366}
                   alt="2025 法國設計獎 銀獎"
-                  className="order-1 md:order-2 rounded-tl-4xl rounded-br-4xl shadow-xl"
+                  className="order-1 md:order-2 self-start h-auto rounded-tl-4xl rounded-br-4xl shadow-xl"
                 />
-              </div>
+              </AOSReveal>
             </div>
           </div>
         </section>

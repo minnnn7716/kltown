@@ -36,9 +36,34 @@ function removeFromRegistry(registrySource, projectCode) {
     throw new Error(`${projectCode} 不存在於 projectRegistry。`);
   }
 
-  return registrySource
+  const registryWithoutProject = registrySource
     .replace(`${importStatement}${lineEnding}`, "")
     .replace(`${registryEntry}${lineEnding}`, "");
+
+  const orderStartMarker = "export const projectOrder = [";
+  const orderEndMarker = "] as const satisfies readonly ProjectCode[];";
+  const orderStart = registryWithoutProject.indexOf(orderStartMarker);
+  const orderEnd = registryWithoutProject.indexOf(orderEndMarker, orderStart);
+
+  if (orderStart === -1 || orderEnd === -1) {
+    throw new Error("找不到 projectOrder 預期結構。");
+  }
+
+  const orderBlock = registryWithoutProject.slice(
+    orderStart,
+    orderEnd + orderEndMarker.length,
+  );
+  const orderLines = orderBlock.split(lineEnding);
+  const projectOrderEntry = `"${projectCode}"`;
+  const updatedOrderLines = orderLines.filter((line) => {
+    const entry = line.trim().replace(/,$/, "");
+    return entry !== projectOrderEntry;
+  });
+
+  return registryWithoutProject.replace(
+    orderBlock,
+    updatedOrderLines.join(lineEnding),
+  );
 }
 
 const readline = createInterface({ input: stdin, output: stdout });

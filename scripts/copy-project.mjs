@@ -93,10 +93,51 @@ function updateRegistry(registrySource, projectCode) {
 
   const updatedRegistryEnd = withImport.indexOf(registryEndMarker);
 
-  return (
+  const withRegistryEntry =
     withImport.slice(0, updatedRegistryEnd) +
     `${lineEnding}  ${projectCode}: ${configVariable},` +
-    withImport.slice(updatedRegistryEnd)
+    withImport.slice(updatedRegistryEnd);
+
+  const orderStartMarker = "export const projectOrder = [";
+  const orderEndMarker = "] as const satisfies readonly ProjectCode[];";
+  const orderStart = withRegistryEntry.indexOf(orderStartMarker);
+  const orderEnd = withRegistryEntry.indexOf(orderEndMarker, orderStart);
+
+  if (orderStart === -1 || orderEnd === -1) {
+    throw new Error("找不到 projectOrder 預期結構。");
+  }
+
+  const orderBodyStart = orderStart + orderStartMarker.length;
+  const orderLines = withRegistryEntry
+    .slice(orderBodyStart, orderEnd)
+    .split(lineEnding);
+  const lastOrderLineIndex = orderLines.findLastIndex(
+    (line) => line.trim() !== "",
+  );
+
+  if (lastOrderLineIndex === -1) {
+    throw new Error("projectOrder 沒有可供追加的項目。");
+  }
+
+  const newOrderEntry = `"${projectCode}"`;
+  if (
+    orderLines.some((line) => {
+      const entry = line.trim().replace(/,$/, "");
+      return entry === newOrderEntry;
+    })
+  ) {
+    throw new Error(`projectOrder 已經包含 ${projectCode}。`);
+  }
+
+  if (!orderLines[lastOrderLineIndex].trimEnd().endsWith(",")) {
+    orderLines[lastOrderLineIndex] += ",";
+  }
+  orderLines.splice(lastOrderLineIndex + 1, 0, `  "${projectCode}",`);
+
+  return (
+    withRegistryEntry.slice(0, orderBodyStart) +
+    orderLines.join(lineEnding) +
+    withRegistryEntry.slice(orderEnd)
   );
 }
 
@@ -153,7 +194,7 @@ try {
 
   // 在寫入前預先讀取並產生所有內容。這些步驟失敗時不會留下檔案異動。
   const sourceConfigPath = path.join(sourceDirectory, "config.ts");
-  const sourceDataPath = path.join(sourceDirectory, "data.ts");
+  const sourceDataPath = path.join(sourceDirectory, "data.tsx");
 
   const [sourceConfig, sourceData, registrySource] = await Promise.all([
     readFile(sourceConfigPath, "utf8"),
@@ -179,7 +220,7 @@ try {
     "utf8",
   );
   await writeFile(
-    path.join(targetDirectory, "data.ts"),
+    path.join(targetDirectory, "data.tsx"),
     nextData,
     "utf8",
   );

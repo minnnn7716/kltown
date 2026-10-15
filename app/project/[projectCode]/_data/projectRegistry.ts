@@ -20,7 +20,7 @@ export const projectOrder = [
   "OnePark",
   "LightImperial",
   "ChingJe",
-  "DuenNan",
+  "DuenNan"
 ] as const satisfies readonly ProjectCode[];
 
 export const orderedProjectCodes = [...projectOrder] as ProjectCode[];

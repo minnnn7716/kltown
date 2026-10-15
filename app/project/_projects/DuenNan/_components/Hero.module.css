@@ -4,9 +4,11 @@
   opacity: 0;
   filter: blur(10px);
   transform: translateX(-30px) scale(0.985);
+  --enter-x: -30px;
+  --enter-y: 0px;
 
   animation:
-    titleEnter 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards,
+    var(--hero-enter-animation) 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards,
     titlePrimarySpacing 1s ease-out 0.5s forwards;
 
   ::after {
@@ -22,7 +24,7 @@
     border-radius: 100%;
     box-shadow: 2px 2px 4px #00000060;
 
-    animation: fadeIn .8s ease-out 1.5s forwards;
+    animation: var(--hero-fade-animation) .8s ease-out 1.5s forwards;
   }
 }
 
@@ -30,25 +32,27 @@
   opacity: 0;
   filter: blur(10px);
   transform: translateX(-30px) scale(0.985);
+  --enter-x: -30px;
+  --enter-y: 0px;
 
   animation:
-    titleEnter 1.5s cubic-bezier(0.22, 1, 0.36, 1) .5s forwards,
+    var(--hero-enter-animation) 1.5s cubic-bezier(0.22, 1, 0.36, 1) .5s forwards,
     titleSecondarySpacing 1s ease-out .5s forwards;
 }
 
 .mainImageAnimation {
   opacity: 0;
-  animation: fadeIn 1s ease-out 300ms forwards;
+  animation: var(--hero-fade-animation) 1s ease-out 300ms forwards;
 }
 
 .divideAnimation {
   opacity: 0;
-  animation: fadeIn .8s ease-out 1.2s forwards;
+  animation: var(--hero-fade-animation) .8s ease-out 1.2s forwards;
 }
 
 .subtitleAnimation {
   opacity: 0;
-  animation: fadeIn 1s ease-out 1.5s forwards;
+  animation: var(--hero-fade-animation) 1s ease-out 1.5s forwards;
 }
 
 .trapezoidShadow {
@@ -99,30 +103,6 @@
 /* =========================
    動畫
 ========================= */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes titleEnter {
-  from {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateX(-30px) scale(0.985);
-  }
-
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0) scale(1);
-  }
-}
 
 @keyframes titlePrimarySpacing {
   from {

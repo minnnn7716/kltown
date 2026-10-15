@@ -1,4 +1,5 @@
 import styles from "./Hero.module.css";
+import AOSReveal from "@/components/AOSReveal";
 
 export default function Hero() {
   return (
@@ -25,17 +26,18 @@ export default function Hero() {
 
       <div className={`${styles.secondarySection} noiseBackground bg-brand-secondary-100 flex items-center justify-end pr-[clamp(24px,3vw,80px)] relative overflow-hidden`}>
         <div className={`${styles.glowBlob} ${styles.glowBlobTopRight}`}></div>
-        <p
+        <AOSReveal
+          as="p"
           className="text-brand font-serif text-xl/loose tracking-[.4em] [writing-mode:vertical-rl]"
-          data-aos="fade-left"
-          data-aos-delay="600"
-          data-aos-duration="1200"
+          animation="fade-left"
+          delay={600}
+          duration={1200}
         >
           雙學園日式一巷宅，<br />
           繁華市心從容相伴；<br />
           一巷謙退收藏靜謐，<br />
           日常自成雅緻風景。
-        </p>
+        </AOSReveal>
       </div>
     </section>
   );

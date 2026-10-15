@@ -15,7 +15,7 @@ export default function Contact({
   const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
-    <section id="contact" className={`md:min-h-screen 2xl:min-h-[70svh] grid grid-cols-1 md:grid-cols-2`}>
+    <section id="contact" className={`xl:min-h-screen 2xl:min-h-[70svh] grid grid-cols-1 md:grid-cols-2`}>
       <div className="relative min-h-80 md:min-h-0">
         {!mapLoaded && (
           <div className="absolute inset-0 bg-brand-200 animate-pulse" />

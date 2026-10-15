@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import AOSInit from "@/components/AOSInit";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GlobalLoading from "@/components/GlobalLoading";
 import { Noto_Sans_TC, Noto_Serif_TC, Zen_Old_Mincho, Aboreto } from "next/font/google";
 
 const zenOldMincho = Zen_Old_Mincho({
@@ -42,9 +44,11 @@ export default function RootLayout({
   children,
 }: RootLayoutProps) {
   return (
-    <html lang="zh-Hant" className={`${zenOldMincho.variable} ${notoSansTC.variable} ${notoSerifTC.variable} ${aboreto.variable}`}>
+    <html lang="zh-Hant" data-scroll-behavior="smooth" className={`${zenOldMincho.variable} ${notoSansTC.variable} ${notoSerifTC.variable} ${aboreto.variable}`}>
       <body>
+        <GlobalLoading />
         <AOSInit />
+        <GoogleAnalytics />
 
         {children}
       </body>

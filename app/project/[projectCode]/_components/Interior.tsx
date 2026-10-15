@@ -1,16 +1,9 @@
 "use client"
 
 import { ImgCarousel, type ImgCarouselHandle } from "@/components/imgCarousel/ImgCarousel"
-import type { ImageListItem } from "@/components/imgCarousel/ImgCarousel"
+import type { ImageListItem, InteriorItem } from "../_data/projectTypes"
 import { useState, useRef } from "react"
-
-export type InteriorItem = {
-  title: string;
-  buttonName: string | null;
-  area: number | null;
-  details: Record<string, number> | null;
-  images: ImageListItem[];
-}
+import AOSReveal from "@/components/AOSReveal"
 
 export default function Interior({
   interiorItems
@@ -43,16 +36,22 @@ export default function Interior({
   }
 
   return (
-    <section className={`overflow-x-clip container mx-auto md:max-w-[80vw] 2xl:max-w-[65vw] md:py-20 pb-10 md:pb-30 grid grid-cols-1 ${interiorItems.length === 1 ? 'md:grid-cols-[2fr_5fr]' : 'md:grid-cols-[4fr_6fr]'} gap-y-10 gap-x-10 items-center`}>
+    <section className={`overflow-x-clip container mx-auto md:max-w-[90vw] xl:max-w-[80vw] 2xl:max-w-[65vw] mb-20 grid grid-cols-1 ${interiorItems.length === 1 ? 'md:grid-cols-[2fr_5fr] pb-20' : 'md:grid-cols-[4fr_6fr] gap-10'} md:gap-10 items-center`}>
       {/* 左側：資訊區域 */}
-      <div className={`${interiorItems.length === 1 ? 'order-1' : 'order-2'} md:order-1 flex flex-col gap-8 py-4 px-8 md:px-0 pt-10 md:pt-0`} data-aos="fade-right" data-aos-offset="200" data-aos-duration="1000">
+      <AOSReveal
+        as="div"
+        className={`${interiorItems.length === 1 ? 'order-1' : 'order-2'} md:order-1 flex flex-col gap-8 py-4 px-8 md:px-0 pt-10 md:pt-0`}
+        animation="fade-right"
+        offset={200}
+        duration={1000}
+      >
         {/* 主要標題與圖片同步 */}
         <div className={`flex ${interiorItems.length === 1 ? 'flex-col justify-between' : 'items-center justify-between gap-3'}`}>
           <h2 className="text-3xl font-bold mb-2 font-serif text-brand-700">{displayInfo.title}</h2>
           {
             displayInfo.area && (<>
               <div className="h-px flex-1 bg-brand-700"></div>
-              <p className="text-xl text-brand-700">{displayInfo.area} 坪</p>
+              <p className="text-xl text-brand-700">{displayInfo.area}</p>
             </>)
           }
 
@@ -63,8 +62,8 @@ export default function Interior({
           <div className="grid grid-cols-2 gap-4">
             {Object.entries(displayInfo.details).map(([room, size]) => (
               <div key={room} className="border-b pb-2">
-                <p className="text-sm text-gray-800">{room}</p>
-                <p className="text-lg font-semibold text-brand-700">{size} 坪</p>
+                <p className="text-sm text-gray-800 mb-2">{room}</p>
+                <p className="text-lg font-medium text-brand-700">{size}</p>
               </div>
             ))}
           </div>
@@ -87,12 +86,12 @@ export default function Interior({
             ))}
           </div>
         )}
-      </div>
+      </AOSReveal>
 
       {/* 右側：圖片輪播 */}
       <ImgCarousel
         ref={carouselRef}
-        className={`${interiorItems.length === 1 ? 'order-2' : 'order-1'} md:order-2 relative w-full h-[30svh] md:h-[80svh] 2xl:h-[60svh]`}
+        className={`${interiorItems.length === 1 ? 'order-2' : 'order-1'} md:order-2 relative w-full h-[30svh] md:h-[50svh] xl:h-[80svh] 2xl:h-[60svh]`}
         imageList={allImages}
         onSelect={setSelectedImageIndex}
       />

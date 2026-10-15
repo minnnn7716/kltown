@@ -1,5 +1,4 @@
-import type { ProjectDetailItem } from "@/app/project/[projectCode]/_components/ProjectDetail"
-import type { IntroContent } from "@/app/project/[projectCode]/_components/Intro";
+import type { IntroContent, ProjectDetailItem } from "@/app/project/[projectCode]/_data/projectTypes";
 
 export const projectDetail: ProjectDetailItem[] = [
   { label: "基地位置", value: "台北市大安區敦化南路一段 177 巷 46 號" },
@@ -31,7 +30,7 @@ export const introContent: IntroContent = {
   ),
   images: [
     {
-      imagePath: "/images/DuenNan/intro/duenNan-ai-render.jpg",
+      imagePath: "/images/DuenNan/intro/duenNan-ai-render.webp",
       description: "敦南 SOHO 結合 AI 模擬"
     },
   ]
@@ -46,35 +45,35 @@ export const interiorItems = [
     details: null,
     images: [
       {
-        imagePath: "/images/DuenNan/interior/01.jpg",
+        imagePath: "/images/DuenNan/interior/01.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/02.jpg",
+        imagePath: "/images/DuenNan/interior/02.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/03.jpg",
+        imagePath: "/images/DuenNan/interior/03.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/04.jpg",
+        imagePath: "/images/DuenNan/interior/04.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/05.jpg",
+        imagePath: "/images/DuenNan/interior/05.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/06.jpg",
+        imagePath: "/images/DuenNan/interior/06.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/07.jpg",
+        imagePath: "/images/DuenNan/interior/07.webp",
         description: "敦南 SOHO 內裝"
       },
       {
-        imagePath: "/images/DuenNan/interior/08.jpg",
+        imagePath: "/images/DuenNan/interior/08.webp",
         description: "敦南 SOHO 內裝"
       },
     ]
