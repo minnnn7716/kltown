@@ -1,0 +1,27 @@
+.theme {
+  --color-brand-100: #ffefe1;
+  --color-brand-200: #ffdabb;
+  --color-brand-300: #ffc4b2;
+  --color-brand-400: #f3a38a;
+  --color-brand-500: #c2664a;
+  --color-brand-600: #a1492e;
+  --color-brand-700: #753521;
+  --color-brand-800: #4c2519;
+  --color-brand-900: #30140c;
+  --color-brand: var(--color-brand-700);
+
+  --color-brand-bg-100: var(--color-brand-100);
+  --color-brand-bg-200: var(--color-brand-200);
+
+  --font-handwriting: "ChenYuluoyan", "Noto Serif TC", serif;
+
+  --border: var(--color-brand);
+}
+
+@font-face {
+  font-family: "ChenYuluoyan";
+  src: url("/fonts/ChenYuluoyan.subset.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}

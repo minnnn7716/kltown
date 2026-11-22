@@ -1,0 +1,53 @@
+.banner {
+  position: relative;
+  overflow: hidden;
+  height: 50svh;
+  color: white;
+  display: grid;
+  align-content: center;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--banner-image) center 40% / cover no-repeat;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #00000065;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 80rem;
+  margin-inline: auto;
+  text-shadow: 0 4px 8px #00000080;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-aboreto);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.75rem;
+  }
+}

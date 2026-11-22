@@ -1,0 +1,17 @@
+.theme {
+  --color-brand-100: #ebf7ff;
+  --color-brand-200: #d4efff;
+  --color-brand-600: #1a6594;
+  --color-brand-700: #134768;
+  --color-brand-800: #08334e;
+  --color-brand-900: #04283f;
+  --color-brand: var(--color-brand-700);
+
+  --color-brand-secondary-100: #ffece0;
+  --color-brand-secondary-300: #ffa988;
+
+  --color-brand-bg-100: var(--color-brand-secondary-100);
+  --color-brand-bg-200: var(--color-brand-secondary-100);
+
+  --border: var(--color-brand);
+}
