@@ -1,0 +1,136 @@
+.title-primary {
+  position: relative;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateX(-30px) scale(0.985);
+  --enter-x: -30px;
+  --enter-y: 0px;
+
+  animation:
+    var(--hero-enter-animation) 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards,
+    titlePrimarySpacing 1s ease-out 0.5s forwards;
+
+  ::after {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-150%);
+    width: 1.3rem;
+    height: 1.3rem;
+    background-color: var(--color-brand-secondary-600);
+    border-radius: 100%;
+    box-shadow: 2px 2px 4px #00000060;
+
+    animation: var(--hero-fade-animation) .8s ease-out 1.5s forwards;
+  }
+}
+
+.title-secondary {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateX(-30px) scale(0.985);
+  --enter-x: -30px;
+  --enter-y: 0px;
+
+  animation:
+    var(--hero-enter-animation) 1.5s cubic-bezier(0.22, 1, 0.36, 1) .5s forwards,
+    titleSecondarySpacing 1s ease-out .5s forwards;
+}
+
+.mainImageAnimation {
+  opacity: 0;
+  animation: var(--hero-fade-animation) 1s ease-out 300ms forwards;
+}
+
+.divideAnimation {
+  opacity: 0;
+  animation: var(--hero-fade-animation) .8s ease-out 1.2s forwards;
+}
+
+.subtitleAnimation {
+  opacity: 0;
+  animation: var(--hero-fade-animation) 1s ease-out 1.5s forwards;
+}
+
+.trapezoidShadow {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  &::before {
+    clip-path: polygon(
+      38% 0,
+      40% 0,
+      2% 100%,
+      0 100%
+    );
+
+    background: linear-gradient(
+      110deg,
+      rgba(0, 0, 0, 0.30) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+
+    transform: scale(1.02);
+  }
+
+  &::after {
+    clip-path: polygon(
+      60% 0,
+      62% 0,
+      100% 100%,
+      98% 100%
+    );
+
+    background: linear-gradient(
+      250deg,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+
+    transform: scale(1.02);
+  }
+}
+
+/* =========================
+   動畫
+========================= */
+
+@keyframes titlePrimarySpacing {
+  from {
+    letter-spacing: 0;
+  }
+
+  to {
+    letter-spacing: 0.4em;
+  }
+}
+
+@keyframes titleSecondarySpacing {
+  from {
+    letter-spacing: 0;
+  }
+
+  to {
+    letter-spacing: 0.2em;
+  }
+}
+/* 
+@media (prefers-reduced-motion: reduce) {
+  .title {
+    animation: none;
+  }
+
+  .primarySection::after {
+    animation: none;
+    opacity: 0.15;
+  }
+} */

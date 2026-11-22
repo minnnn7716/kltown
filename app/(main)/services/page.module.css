@@ -1,0 +1,113 @@
+:global(html) {
+  scroll-behavior: smooth;
+}
+
+.numberedList {
+  list-style: none;
+  counter-reset: service-item;
+}
+
+.numberedList > li {
+  counter-increment: service-item;
+}
+
+.numberedList > li::marker {
+  content: counter(service-item, cjk-ideographic) "、";
+}
+
+.nestedList {
+  list-style-type: decimal;
+}
+
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.projectLink {
+  display: inline-block;
+  border: 1px solid var(--color-brand-text-900);
+  padding: 0.5rem 1rem;
+  color: var(--color-brand-text-900);
+  font-family: var(--font-serif);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.projectLink:hover,
+.projectLink:focus-visible {
+  background-color: var(--color-brand-text-900);
+  color: white;
+}
+
+.serviceNavigation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.serviceLink {
+  position: relative;
+  display: grid;
+  min-height: 10rem;
+  place-items: center;
+  overflow: hidden;
+  padding: 1.5rem;
+  color: white;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 2px 6px #000000;
+  background-position: center;
+  background-size: cover;
+  transition: transform 200ms ease;
+}
+
+.serviceLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #00000055;
+  transition: background 200ms ease;
+}
+
+.serviceLink {
+  background-image: url("/images/main/services/whole_case.webp");
+}
+
+.serviceNavigation li:nth-child(2) .serviceLink {
+  background-image: url("/images/main/services/dangerous_and%20old%20buildings.webp");
+}
+
+.serviceNavigation li:nth-child(3) .serviceLink {
+  background-image: url("/images/main/services/joint.webp");
+}
+
+.serviceLink:hover::before,
+.serviceLink:focus-visible::before {
+  background: #00000025;
+}
+
+.serviceLink:hover,
+.serviceLink:focus-visible {
+  transform: translateY(-0.25rem);
+}
+
+.serviceLink span {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .serviceNavigation {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceLink {
+    min-height: 7rem;
+  }
+}

@@ -1,0 +1,42 @@
+@theme {
+  --font-title: var(--font-zen-old-mincho);
+  --font-aboreto: var(--font-aboreto);
+  --font-sans: var(--font-noto-sans-tc), "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-noto-serif-tc), serif;
+  --noise-url: url("/textures/noise.png");
+
+  /* 預設值，各頁面 theme.module.css 覆寫 */
+  --color-brand: var(--color-brand-700);
+  --color-brand-100: var(--color-mist-50);
+  --color-brand-200: var(--color-mist-100);
+  --color-brand-300: var(--color-mist-200);
+  --color-brand-400: var(--color-mist-300);
+  --color-brand-500: var(--color-mist-400);
+  --color-brand-600: var(--color-mist-500);
+  --color-brand-700: var(--color-mist-600);
+  --color-brand-800: var(--color-mist-700);
+  --color-brand-900: var(--color-mist-800);
+
+  --color-brand-secondary-100: var(--color-mist-50);
+  --color-brand-secondary-200: var(--color-mist-100);
+  --color-brand-secondary-300: #ffefe1;
+  --color-brand-secondary-400: #ffefe1;
+  --color-brand-secondary-500: #ffefe1;
+  --color-brand-secondary-600: #ffefe1;
+  --color-brand-secondary-700: #ffefe1;
+  --color-brand-secondary-800: #ffefe1;
+  --color-brand-secondary-900: #ffefe1;
+
+  --color-brand-bg-100: var(--color-brand-100);
+  --color-brand-bg-200: var(--color-brand-200);
+
+  --border: var(--color-brand);
+}
+
+:root {
+  --page-background: #edf0f4;
+  font-family: var(--font-sans);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
