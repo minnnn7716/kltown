@@ -1,11 +1,12 @@
 {
-  "name": "kltown-test",
+  "name": "kldown",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "deploy:test": "call deploy-test.bat",
+    "deploy:production": "call deploy-test.bat -Environment Production",
     "start": "next start",
     "lint": "eslint",
     "copy": "node scripts/copy-project.mjs",

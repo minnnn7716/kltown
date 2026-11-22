@@ -6,7 +6,7 @@ const measurementId = "G-J67B4L9MQX";
 
 declare global {
   interface Window {
-    dataLayer: unknown[][];
+    dataLayer: IArguments[];
     gtag: (...args: unknown[]) => void;
   }
 }
@@ -21,7 +21,10 @@ export default function GoogleAnalytics() {
     }
 
     window.dataLayer = window.dataLayer || [];
-    window.gtag = (...args) => window.dataLayer.push(args);
+    window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params -- gtag requires the Arguments object.
+      window.dataLayer.push(arguments);
+    };
     window.gtag("js", new Date());
     window.gtag("config", measurementId);
 

@@ -1,15 +1,36 @@
 [CmdletBinding()]
 param(
+    [ValidateSet('Test', 'Production')]
+    [string]$Environment = 'Test',
     [switch]$DryRun
 )
 
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
 
-# Set to /KLTown-Test if IIS hosts the app below that URL path.
-$env:NEXT_PUBLIC_BASE_PATH = ''
+$targetConfig = switch ($Environment) {
+    'Test' {
+        @{
+            SiteName = 'KLTown-Test'
+            SiteUrl = 'http://TP-EIP/KLTown-Test/'
+            BasePath = ''
+            Confirmation = 'MIRROR'
+            PreserveExtraFiles = $false
+        }
+    }
+    'Production' {
+        @{
+            SiteName = 'KLTown'
+            SiteUrl = 'https://www.kltown.com/'
+            BasePath = ''
+            Confirmation = 'DEPLOY KLTOWN'
+            PreserveExtraFiles = $false
+        }
+    }
+}
 
-$siteName = 'KLTown-Test'
+$siteName = $targetConfig.SiteName
+$env:NEXT_PUBLIC_BASE_PATH = $targetConfig.BasePath
 $serviceUrl = "https://TP-EIP:8172/msdeploy.axd?site=$siteName"
 $deploymentAssemblyPath = Join-Path $env:ProgramFiles 'IIS\Microsoft Web Deploy V3\Microsoft.Web.Deployment.dll'
 $sourcePath = Join-Path $PSScriptRoot 'out'
@@ -27,11 +48,37 @@ if (-not (Test-Path (Join-Path $sourcePath 'index.html'))) {
     throw "Build output '$sourcePath\index.html' was not found."
 }
 
+if ($targetConfig.BasePath) {
+    $assetPattern = '(?<delimiter>["''(])(?<asset>/(?:images|fonts|textures)/)'
+    $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+    $rewrittenFiles = 0
+    $textFiles = Get-ChildItem $sourcePath -Recurse -File | Where-Object { $_.Extension -in @('.html', '.txt', '.css', '.js') }
+
+    foreach ($file in $textFiles) {
+        $content = [System.IO.File]::ReadAllText($file.FullName)
+        $updatedContent = [regex]::Replace($content, $assetPattern, {
+            param($match)
+            $match.Groups['delimiter'].Value + $targetConfig.BasePath + $match.Groups['asset'].Value
+        })
+
+        if ($updatedContent -cne $content) {
+            [System.IO.File]::WriteAllText($file.FullName, $updatedContent, $utf8NoBom)
+            $rewrittenFiles++
+        }
+    }
+
+    Write-Host "Prefixed public asset paths in $rewrittenFiles exported files."
+}
+
 if (-not $DryRun) {
-    Write-Warning "Mirror deployment removes files on the IIS site that are not in out\."
-    Write-Host "Target: $serviceUrl"
-    $confirmation = Read-Host 'Type MIRROR to continue'
-    if ($confirmation -cne 'MIRROR') {
+    if ($targetConfig.PreserveExtraFiles) {
+        Write-Warning "Production deployment preserves files on the IIS site that are not in out\."
+    } else {
+        Write-Warning "Mirror deployment removes files on the IIS site that are not in out\."
+    }
+    Write-Host "Target: $($targetConfig.SiteUrl)"
+    $confirmation = Read-Host "Type '$($targetConfig.Confirmation)' to continue"
+    if ($confirmation -cne $targetConfig.Confirmation) {
         Write-Host 'Deployment cancelled.'
         exit 0
     }
@@ -52,7 +99,8 @@ using Microsoft.Web.Deployment;
 public static class KLTownWebDeployCallbacks
 {
     public static readonly EventHandler<DeploymentTraceEventArgs> TraceHandler = WriteTrace;
-    public static readonly RemoteCertificateValidationCallback CertificateHandler = AcceptCertificate;
+    public static readonly RemoteCertificateValidationCallback TestCertificateHandler = AcceptAnyCertificate;
+    public static readonly RemoteCertificateValidationCallback ProductionCertificateHandler = AcceptAnyCertificate;
 
     private static void WriteTrace(object sender, DeploymentTraceEventArgs eventArgs)
     {
@@ -76,10 +124,11 @@ public static class KLTownWebDeployCallbacks
             totalChanges, added, deleted, updated, parameterChanges, bytesCopied);
     }
 
-    private static bool AcceptCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+    private static bool AcceptAnyCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
     {
         return true;
     }
+
 }
 '@
 $traceHandler = [KLTownWebDeployCallbacks]::TraceHandler
@@ -96,9 +145,13 @@ $destinationOptions.UserName = $credential.UserName
 $destinationOptions.Password = $credential.GetNetworkCredential().Password
 $syncOptions = [Microsoft.Web.Deployment.DeploymentSyncOptions]::new()
 $syncOptions.WhatIf = [bool]$DryRun
-$syncOptions.DoNotDelete = $false
+$syncOptions.DoNotDelete = $targetConfig.PreserveExtraFiles
 $previousCertificateCallback = [System.Net.ServicePointManager]::ServerCertificateValidationCallback
-$certificateCallback = [KLTownWebDeployCallbacks]::CertificateHandler
+$certificateCallback = if ($Environment -eq 'Production') {
+    [KLTownWebDeployCallbacks]::ProductionCertificateHandler
+} else {
+    [KLTownWebDeployCallbacks]::TestCertificateHandler
+}
 
 try {
     [System.Net.ServicePointManager]::ServerCertificateValidationCallback = $certificateCallback

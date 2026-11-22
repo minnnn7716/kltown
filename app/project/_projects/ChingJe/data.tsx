@@ -79,37 +79,3 @@ export const interiorItems = [
     ]
   },
 ];
-
-
-export const surroundingDetail = {
-  title: "城心藏藝 生活成景",
-  subTitle: "繁華與靜謐之間 恰好的從容",
-  locationHighlights: [
-    {
-      distance: "500m",
-      name: "三創生活園區",
-      description: "科技與創意，在日常裡交會"
-    },
-    {
-      distance: "650m",
-      name: "中央藝文公園",
-      description: "在城市中心，收藏一片綠意"
-    },
-    {
-      distance: "700m",
-      name: "華山文創園區",
-      description: "讓藝文成為每日風景"
-    },
-    {
-      distance: "800m",
-      name: "捷運忠孝新生站",
-      description: "板南、松山新店線雙捷交會"
-    },
-    {
-      distance: "800m",
-      name: "捷運善導寺站",
-      description: "一站台北車站，串聯城市樞紐"
-    }
-  ],
-  aerialImage: "/images/ChingJe/aerial_photo.webp",
-}

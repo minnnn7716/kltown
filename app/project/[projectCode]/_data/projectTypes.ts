@@ -28,7 +28,7 @@ export type SurroundingDetail = {
     description: string;
   }[];
   aerialImage: string;
-  aerialHighlightsImage?: string;
+  aerialHighlightsImage: string;
 }
 
 export type InteriorItem = {
